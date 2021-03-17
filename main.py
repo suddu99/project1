@@ -1,15 +1,12 @@
-# importing pandas package
+# import pandas library
 import pandas as pd
 
-# making data frame from csv file
-data = pd.read_csv("data.csv")
+# load data
+df1 = pd.read_csv("data.csv")
 
-# sorting by first name
-data.sort_values("Mobile Number", inplace=False)
+# drop rows which have same order_id
+# and customer_id and keep latest entry
+newdf = df1.drop_duplicates( subset = ['Mobile Number','Service Indication'], keep="first")
 
-# dropping ALL duplicte values
-data.drop_duplicates(subset="Mobile Number",
-                   keep='first', inplace=True)
-
-# displaying data
-print(data)
+#copy data to other file
+newdf.to_csv("data1.csv",index=False)
