@@ -15,8 +15,8 @@ df1 = df.drop_duplicates(subset=['Mobile Number', 'Service Indication'], keep="f
 # Copy the filtered data to file data1
 df2 = df1.to_csv("data1.csv", index=False)
 
+# Creating a log file of filename = logfile.log
 logging.basicConfig(filename='logfile.log', level=logging.DEBUG)
-
 
 # function to search by service Indication
 def searchByserviceIndication(num):
@@ -36,16 +36,13 @@ def searchByserviceIndication(num):
             if row[2] in lst:
                 logging.debug(row)
 
-
 # function to search by mobile number
 def searchBynumber():
     mb_num = input("Enter the Mobile Number")
     csv_file = csv.reader(open("data1.csv", "r"))
-
     for row in csv_file:
         if mb_num == row[0]:
             logging.debug(row)
-
 
 # function to sort according to batchsize
 def batchSize():
@@ -61,18 +58,15 @@ def batchSize():
         sc = []
         count = 0
         for j in root[i]:
-            print(j.tag, j.text)
+            # print(j.tag, j.text)
             sc.append(newXML.SubElement(c[i], j.tag))
             sc[count].text = j.text
-            count = count + 1                   #count used becauses i is not an integer i.e it is an XML element
-
+            count = count + 1  # count used becauses i is not an integer i.e it is an XML element
     tree1 = newXML.ElementTree(root1)
     with open("data1.xml", "wb") as files:
         tree1.write(files)
 
- # SudarshanLog1: the data1.xml is not pretty printed i.e it is unformatted but contains all the data
-
-
+# Main Function
 print("Enter 1 to search by service indication ")
 print("Enter 2 to search by mobile number ")
 print("Enter 3 to enter the batch size")
