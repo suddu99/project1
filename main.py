@@ -19,7 +19,6 @@ df2 = df1.to_csv("data1.csv", index=False)
 logging.basicConfig(filename='logfile.log', level=logging.INFO ,
                     format='%(asctime)s %(levelname)s-%(message)s''\n')
 
-
 # function to search by service Indication
 def searchByserviceIndication(num):
     global sr_indication
@@ -38,7 +37,6 @@ def searchByserviceIndication(num):
             if row[2] in lst:
                 logging.info(row)
 
-
 # function to search by mobile number
 def searchBynumber():
     mb_num = input("Enter the Mobile Number")
@@ -46,7 +44,6 @@ def searchBynumber():
     for row in csv_file:
         if mb_num == row[0]:
             logging.info(row)
-
 
 # function to sort according to batchsize
 def batchSize():
@@ -69,7 +66,6 @@ def batchSize():
     tree1 = newXML.ElementTree(root1)
     with open("data1.xml", "wb") as files:
         tree1.write(files)
-
 
 # Main Function
 print("Enter 1 to search by service indication ")
