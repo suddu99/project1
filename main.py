@@ -46,7 +46,6 @@ def searchBynumber():
 
 # function to sort xml file according to batchsize
 def batchSize():
-    # count = 0
     tree = ET.parse('data.xml')
     c = []
     root = tree.getroot()
