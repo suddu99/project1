@@ -44,7 +44,7 @@ def searchBynumber():
         if mb_num == row[0]:
             logging.info(row)
 
-# function to sort according to batchsize
+# function to sort xml file according to batchsize
 def batchSize():
     # count = 0
     tree = ET.parse('data.xml')
