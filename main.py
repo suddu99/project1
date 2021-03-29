@@ -6,7 +6,6 @@ import pandas as pd
 import xml.etree.ElementTree as newXML
 
 # load data into file data
-
 df = pd.read_csv("data.csv")
 
 # filter the duplicate values
