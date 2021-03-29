@@ -16,7 +16,9 @@ df1 = df.drop_duplicates(subset=['Mobile Number', 'Service Indication'], keep="f
 df2 = df1.to_csv("data1.csv", index=False)
 
 # Creating a log file of filename = logfile.log
-logging.basicConfig(filename='logfile.log', level=logging.DEBUG)
+logging.basicConfig(filename='logfile.log', level=logging.INFO ,
+                    format='%(asctime)s %(levelname)s-%(message)s''\n')
+
 
 # function to search by service Indication
 def searchByserviceIndication(num):
@@ -30,11 +32,12 @@ def searchByserviceIndication(num):
     if num == 1:
         for row in csv_file:
             if sr_indication == row[2]:
-                logging.debug(row)
+                logging.info(row)
     elif num > 1:
         for row in csv_file:
             if row[2] in lst:
-                logging.debug(row)
+                logging.info(row)
+
 
 # function to search by mobile number
 def searchBynumber():
@@ -42,7 +45,8 @@ def searchBynumber():
     csv_file = csv.reader(open("data1.csv", "r"))
     for row in csv_file:
         if mb_num == row[0]:
-            logging.debug(row)
+            logging.info(row)
+
 
 # function to sort according to batchsize
 def batchSize():
@@ -66,10 +70,11 @@ def batchSize():
     with open("data1.xml", "wb") as files:
         tree1.write(files)
 
+
 # Main Function
 print("Enter 1 to search by service indication ")
 print("Enter 2 to search by mobile number ")
-print("Enter 3 to enter the batch size")
+print("Enter 3 to sort xml file according to batchsize ")
 src = int(input("Enter here : "))
 
 if src == 1:
@@ -82,6 +87,6 @@ elif src == 3:
     if batchsize <= 8:
         batchSize()
     else:
-        logging.debug("Invalid Input ")
+        logging.info("Invalid Input ")
 else:
-    logging.debug("Invalid input ")
+    logging.info("Invalid input ")
